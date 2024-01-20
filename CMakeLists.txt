@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.1)
 
-#set(CMAKE_CXX_COMPILER "/usr/bin/g++-12")
-#set(CMAKE_C_COMPILER "/usr/bin/gcc-12")
 
 project(architect CXX)
 set(CMAKE_CXX_STANDARD 17)
@@ -9,16 +7,32 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Wall -Wextra -Wpedantic -Wov
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+if(NOT CMAKE_CXX_EXTENSIONS)
+    set(CMAKE_CXX_EXTENSIONS OFF)
+endif()
 
-enable_testing()
-find_package(GTest CONFIG REQUIRED)
-include(GoogleTest)
+set(CMAKE_CXX_CPPCHECK "cppcheck")
+find_program(CMAKE_CXX_CPPCHECK NAMES cppcheck)
+if (CMAKE_CXX_CPPCHECK)
+    list(
+        APPEND CMAKE_CXX_CPPCHECK
+#        "--enable=all"
+        "--enable=warning"
+		"--inconclusive"
+		"--force"
+		"--inline-suppr"
+		"--quiet"
+    )
+endif()
+
+
+add_subdirectory(tests)
+add_subdirectory(libs)
 
 add_executable(${PROJECT_NAME} main.cpp )
 
-target_link_libraries(${PROJECT_NAME} gtest gtest_main)
-gtest_discover_tests(${PROJECT_NAME})
+target_link_libraries(${PROJECT_NAME} quadratic_equation)                   
 
-install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_CURRENT_SOURCE_DIR})
+#install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_CURRENT_SOURCE_DIR})
 
 
