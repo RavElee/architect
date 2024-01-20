@@ -3,4 +3,5 @@ architect
 .cache/
 run_tests.sh
 build.sh
+compile_commands.json
 
