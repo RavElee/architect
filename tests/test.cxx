@@ -141,6 +141,15 @@ TEST(Quadratic_eq_solver, CHECK_ONE_INF)
     EXPECT_ANY_THROW(IDZ_1::quadratic_solver::solve(a, b, c));
 }
 
+TEST(Quadratic_eq_solver, CHECK_D_EQ_EPS)
+{
+    double eps = 1e-12;
+    double a = 1;
+    double b = 1;
+    double c = b / (4.0 * a) + eps / 5.0f;
+    ASSERT_EQ(IDZ_1::quadratic_solver::solve(a, b, c, eps).size(), 0);
+}
+
 
 
 
