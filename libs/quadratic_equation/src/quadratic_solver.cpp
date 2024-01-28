@@ -16,8 +16,8 @@ namespace IDZ_1 {
         std::vector<double> result;
 
         double d = b * b - 4.0 * a * c;
-
-        if(d < 0)// no roots in real numbers
+        std::cout << "D = "<< d << " eps = " << eps <<std::endl;
+        if(std::signbit(d) == true)// no roots in real numbers
             return result;
 
         if(nearToZero(d, eps))
@@ -25,7 +25,7 @@ namespace IDZ_1 {
             result.push_back(-b / (2 * a));
             result.push_back(-b / (2 * a));
         }
-        else if(d > 0)
+        else
         {
             result.push_back((-b + std::sqrt(d)) / (2 * a));
             result.push_back((-b - std::sqrt(d)) / (2 * a));
