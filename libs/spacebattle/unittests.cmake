@@ -5,7 +5,6 @@ find_package(GTest CONFIG REQUIRED)
 include(GoogleTest)
 
 set(HEADERS
-    ./tests/include/spacebattle_tests.h
 )
 set(SOURCES
 )
