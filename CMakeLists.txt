@@ -26,12 +26,12 @@ if (CMAKE_CXX_CPPCHECK)
 endif()
 
 
-add_subdirectory(tests)
+#add_subdirectory(tests)
 add_subdirectory(libs)
 
 add_executable(${PROJECT_NAME} main.cpp )
 
-target_link_libraries(${PROJECT_NAME} quadratic_equation)                   
+target_link_libraries(${PROJECT_NAME} quadratic_equation spacebattle)
 
 #install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_CURRENT_SOURCE_DIR})
 

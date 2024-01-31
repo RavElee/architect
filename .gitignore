@@ -4,4 +4,5 @@ architect
 run_tests.sh
 build.sh
 compile_commands.json
+.clang-format
 

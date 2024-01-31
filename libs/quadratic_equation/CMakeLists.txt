@@ -21,4 +21,4 @@ target_include_directories(${PROJECT_NAME}
 
 #install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_CURRENT_SOURCE_DIR})
 
-
+include("unittests.cmake")
