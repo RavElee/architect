@@ -1,0 +1,9 @@
+#ifndef SPACEBATTLE_TESTS_H
+#define SPACEBATTLE_TESTS_H
+
+
+class A{};
+
+
+
+#endif //SPACEBATTLE_TESTS_H
