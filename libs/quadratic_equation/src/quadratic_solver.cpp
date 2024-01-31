@@ -16,7 +16,6 @@ namespace IDZ_1 {
         std::vector<double> result;
 
         double d = b * b - 4.0 * a * c;
-        std::cout << "D = "<< d << " eps = " << eps <<std::endl;
         if(std::signbit(d) == true)// no roots in real numbers
             return result;
 
