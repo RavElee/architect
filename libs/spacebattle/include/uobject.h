@@ -34,17 +34,22 @@ namespace spacebattle
             if (map.find(key) == map.end())
                 throw std::exception();
 
-            return std::any_cast<T>(map.at(key));
+            return std::any_cast<std::decay_t<T>>(map.at(key));
         }
 
         template<class T>
         void setProperty(const PROPERTY key, T val)
         {
+            setPropertyHelper<std::decay_t<T>>(key, val);
+        }
+
+    private:
+        template<class T, std::enable_if_t<std::is_same<T, std::decay_t<T>>::value, bool> = true>
+        void setPropertyHelper(const PROPERTY key, T val)
+        {
             map[key] = val;
         }
 
-
-    private:
         std::unordered_map<PROPERTY, std::any> map;
     };
 } // namespace spacebattle
