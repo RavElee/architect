@@ -1,7 +1,7 @@
 #ifndef LOG_COMMAND_H
 #define LOG_COMMAND_H
 
-#include <command.h>
+#include "command.h"
 #include <iostream>
 
 namespace engine

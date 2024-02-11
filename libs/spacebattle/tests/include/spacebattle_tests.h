@@ -5,8 +5,8 @@
 
 #include "rotatable_adapter.h"
 #include <gtest/gtest.h>
-#include <move.h>
-#include <rotate.h>
+#include <commands/move.h>
+#include <commands/rotate.h>
 #include <spaceship.h>
 
 // 7.3.1

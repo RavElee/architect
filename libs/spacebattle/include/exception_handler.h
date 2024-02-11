@@ -1,7 +1,7 @@
 #ifndef EXCEPTIONHANDLER_H
 #define EXCEPTIONHANDLER_H
 
-#include "command.h"
+#include <commands/command.h>
 #include <functional>
 #include <map>
 #include <typeindex>

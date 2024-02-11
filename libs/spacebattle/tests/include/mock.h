@@ -2,7 +2,7 @@
 #define MOCK_H
 
 #include <gmock/gmock.h>
-#include <command.h>
+#include <commands/command.h>
 #include <exception_handler.h>
 
 class mock_command : public engine::command

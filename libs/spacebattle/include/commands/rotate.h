@@ -1,7 +1,7 @@
 #ifndef ROTATE_H
 #define ROTATE_H
 
-#include <command.h>
+#include "command.h"
 #include <rotatable.h>
 
 namespace engine {

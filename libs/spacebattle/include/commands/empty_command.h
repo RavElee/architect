@@ -1,7 +1,7 @@
 #ifndef EMPTY_COMMAND_H
 #define EMPTY_COMMAND_H
 
-#include <command.h>
+#include "command.h"
 #include <iostream>
 #include <empty_exception.h>
 

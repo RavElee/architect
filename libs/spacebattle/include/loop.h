@@ -1,7 +1,7 @@
 #ifndef LOOP_H
 #define LOOP_H
 
-#include "command.h"
+#include <commands/command.h>
 #include "threadsafe_q.h"
 #include <condition_variable>
 #include <thread>

@@ -4,12 +4,12 @@
 #include <gtest/gtest.h>
 #include <mock.h>
 
-#include "repeat_command.h"
-#include <repeat_twice_command.h>
-#include <empty_command.h>
+#include <commands/repeat_command.h>
+#include <commands/repeat_twice_command.h>
+#include <commands/empty_command.h>
 #include <empty_exception.h>
 #include <exception_handler.h>
-#include <log_command.h>
+#include <commands/log_command.h>
 #include <loop.h>
 
 TEST(SOLID_EXCEPTIONS, MOCK_TEST)
@@ -137,10 +137,6 @@ TEST(SOLID_EXCEPTIONS, REPEAT_ONCE_AND_LOG_IF_ANY_EXCEPT)
 
     q.push(cmd);
 
-    // иначе loop умрёт и команды не обработаются
-    // TODO: сделать очередь с приоритетами
-    using namespace std::literals;
-    // std::this_thread::sleep_for(100ms);
     eventLoop.stop();
 }
 
@@ -188,10 +184,6 @@ TEST(SOLID_EXCEPTIONS, REPEAT_TWICE_AND_LOG_IF_ANY_EXCEPT)
 
     q.push(cmd);
 
-    // иначе loop умрёт и команды не обработаются
-    // TODO: сделать очередь с приоритетами
-    using namespace std::literals;
-    // std::this_thread::sleep_for(100ms);
     eventLoop.stop();
 }
 
