@@ -17,6 +17,14 @@ set(HEADERS
     ./include/vector.h
     ./include/uobject.h
     ./include/rotatable_adapter.h
+    ./include/threadsafe_q.h
+    ./include/loop.h
+    ./include/exception_handler.h
+    ./include/log_command.h
+    ./include/empty_command.h
+    ./include/empty_exception.h
+    ./include/repeat_command.h
+    ./include/repeat_twice_command.h
 )
 
 set(SOURCES
@@ -25,7 +33,9 @@ set(SOURCES
     ./src/movable_adapter.cpp
     ./src/rotate.cpp
     ./src/spaceship.cpp
-    ./src/rotatable_adapter.cpp
+    ./src/rotatable_adapter.cpp 
+    ./src/loop.cpp
+    ./src/exception_handler.cpp
 )
 
 add_library(${PROJECT_NAME} STATIC ${HEADERS} ${SOURCES})
