@@ -2,10 +2,11 @@
 #define MOVE_H
 
 #include "command.h"
-#include "movable.h"
 
 namespace engine
 {
+    class movable;
+
     class move : public command
     {
         movable &obj;
@@ -14,6 +15,6 @@ namespace engine
         move(movable &obj);
         void execute() override;
     };
-} // namespace spacebattle
+} // namespace engine
 
 #endif // MOVE_H

@@ -2,16 +2,20 @@
 #define ROTATE_H
 
 #include "command.h"
-#include <rotatable.h>
 
-namespace engine {
-class rotate : public command {
-    rotatable &obj;
-public:
-    rotate(rotatable &obj);
-    void execute() override;
-};
+namespace engine
+{
+    class rotatable;
 
-} // namespace spacebattle
+    class rotate : public command
+    {
+        rotatable &obj;
+
+    public:
+        rotate(rotatable &obj);
+        void execute() override;
+    };
+
+} // namespace engine
 
 #endif // ROTATE_H

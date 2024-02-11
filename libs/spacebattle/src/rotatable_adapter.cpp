@@ -1,6 +1,8 @@
 
 #include <rotatable_adapter.h>
 #include <uobject.h>
+#include <rotatable.h>
+
 
 namespace engine
 {

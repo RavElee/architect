@@ -1,8 +1,8 @@
 
 #include "uobject.h"
 #include <cmath>
-#include <iostream>
 #include <movable_adapter.h>
+#include <movable.h>
 
 namespace engine
 {

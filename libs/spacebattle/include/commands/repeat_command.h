@@ -2,15 +2,18 @@
 #define REPEAT_COMMAND_H
 
 #include "command.h"
-#include <iostream>
+
 namespace engine
 {
 
     class repeat_command : public command
     {
         command_shared cmd;
+
     public:
-        repeat_command(command_shared cmd): cmd(cmd) {}
+        repeat_command(command_shared cmd) : cmd(cmd)
+        {
+        }
 
         void execute() override
         {

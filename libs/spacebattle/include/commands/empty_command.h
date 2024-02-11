@@ -2,8 +2,6 @@
 #define EMPTY_COMMAND_H
 
 #include "command.h"
-#include <iostream>
-#include <empty_exception.h>
 
 namespace engine
 {

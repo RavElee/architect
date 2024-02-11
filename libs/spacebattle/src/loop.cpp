@@ -1,6 +1,5 @@
 
 #include <exception_handler.h>
-#include <iostream>
 #include <loop.h>
 
 namespace engine
