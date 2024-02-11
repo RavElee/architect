@@ -4,7 +4,7 @@
 #include <command.h>
 #include <rotatable.h>
 
-namespace spacebattle {
+namespace engine {
 class rotate : public command {
     rotatable &obj;
 public:

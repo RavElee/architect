@@ -3,7 +3,7 @@
 
 #include <movable.h>
 
-namespace spacebattle
+namespace engine
 {
     class uobject;
 

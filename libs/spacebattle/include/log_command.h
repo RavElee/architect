@@ -6,7 +6,7 @@
 
 namespace engine
 {
-    class log_command : public spacebattle::command
+    class log_command : public engine::command
     {
     public:
         log_command(const std::exception& e):e(e) {};

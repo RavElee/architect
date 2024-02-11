@@ -11,7 +11,7 @@ namespace engine
     class loop
     {
     public:
-        loop(threadsafe_q<spacebattle::command_shared>& q);
+        loop(threadsafe_q<command_shared>& q);
 
         ~loop();
 
@@ -25,9 +25,9 @@ namespace engine
         std::condition_variable cv;
         mutable std::mutex mtx;
         std::thread thr;
-        engine::threadsafe_q<spacebattle::command_shared>& q;
+        engine::threadsafe_q<command_shared>& q;
 
-        class command_stop : public spacebattle::command
+        class command_stop : public command
         {
         public:
             command_stop(loop& loop):_loop(loop){}

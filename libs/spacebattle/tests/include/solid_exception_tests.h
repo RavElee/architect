@@ -1,5 +1,6 @@
 #ifndef SOLID_EXCEPTION_TESTS_H
 #define SOLID_EXCEPTION_TESTS_H
+
 #include <gtest/gtest.h>
 #include <mock.h>
 
@@ -13,7 +14,7 @@
 
 TEST(SOLID_EXCEPTIONS, MOCK_TEST)
 {
-    engine::threadsafe_q<spacebattle::command_shared> q;
+    engine::threadsafe_q<engine::command_shared> q;
     engine::loop eventLoop(q);
 
     auto cmd = std::make_shared<mock_command>();
@@ -33,12 +34,12 @@ TEST(SOLID_EXCEPTIONS, LOG_CMD)
 TEST(SOLID_EXCEPTIONS, LOG_CMD_PUT_IN_Q)
 {
     engine::exception_handler &eh = engine::exception_handler::instance();
-    engine::threadsafe_q<spacebattle::command_shared> q;
+    engine::threadsafe_q<engine::command_shared> q;
     engine::loop eventLoop(q);
     eventLoop.start();
 
-    engine::handlerFunc handlerLocal = [](spacebattle::command_shared,
-                                          const std::exception &e) -> spacebattle::command_shared {
+    engine::handlerFunc handlerLocal = [](engine::command_shared,
+                                          const std::exception &e) -> engine::command_shared {
         return std::make_shared<engine::log_command>(e);
     };
 
@@ -55,12 +56,12 @@ TEST(SOLID_EXCEPTIONS, LOG_CMD_PUT_IN_Q)
 TEST(SOLID_EXCEPTIONS, REPEAT_CMD)
 {
     engine::exception_handler &eh = engine::exception_handler::instance();
-    engine::threadsafe_q<spacebattle::command_shared> q;
+    engine::threadsafe_q<engine::command_shared> q;
     engine::loop eventLoop(q);
     eventLoop.start();
 
-    engine::handlerFunc handlerLocal = [](spacebattle::command_shared cmd,
-                                          const std::exception &) -> spacebattle::command_shared {
+    engine::handlerFunc handlerLocal = [](engine::command_shared cmd,
+                                          const std::exception &) -> engine::command_shared {
         return std::make_shared<engine::repeat_command>(cmd);
     };
 
@@ -77,12 +78,12 @@ TEST(SOLID_EXCEPTIONS, REPEAT_CMD)
 TEST(SOLID_EXCEPTIONS, REPEAT_CMD_PUT_IN_Q)
 {
     engine::exception_handler &eh = engine::exception_handler::instance();
-    engine::threadsafe_q<spacebattle::command_shared> q;
+    engine::threadsafe_q<engine::command_shared> q;
     engine::loop eventLoop(q);
     eventLoop.start();
 
-    engine::handlerFunc handlerLocal = [&q](spacebattle::command_shared cmd,
-                                            const std::exception &) -> spacebattle::command_shared {
+    engine::handlerFunc handlerLocal = [&q](engine::command_shared cmd,
+                                            const std::exception &) -> engine::command_shared {
         q.push(std::make_shared<engine::repeat_command>(cmd));
         return std::make_shared<engine::empty_command>();
     };
@@ -108,12 +109,12 @@ TEST(SOLID_EXCEPTIONS, REPEAT_CMD_PUT_IN_Q)
 TEST(SOLID_EXCEPTIONS, REPEAT_ONCE_AND_LOG_IF_ANY_EXCEPT)
 {
     engine::exception_handler &eh = engine::exception_handler::instance();
-    engine::threadsafe_q<spacebattle::command_shared> q;
+    engine::threadsafe_q<engine::command_shared> q;
     engine::loop eventLoop(q);
     eventLoop.start();
 
-    engine::handlerFunc handlerLocal = [](spacebattle::command_shared cmd,
-                                            const std::exception &) -> spacebattle::command_shared {
+    engine::handlerFunc handlerLocal = [](engine::command_shared cmd,
+                                            const std::exception &) -> engine::command_shared {
         try
         {
             cmd->execute();
@@ -146,12 +147,12 @@ TEST(SOLID_EXCEPTIONS, REPEAT_ONCE_AND_LOG_IF_ANY_EXCEPT)
 TEST(SOLID_EXCEPTIONS, REPEAT_TWICE_AND_LOG_IF_ANY_EXCEPT)
 {
     engine::exception_handler &eh = engine::exception_handler::instance();
-    engine::threadsafe_q<spacebattle::command_shared> q;
+    engine::threadsafe_q<engine::command_shared> q;
     engine::loop eventLoop(q);
     eventLoop.start();
 
-    engine::handlerFunc innerHandler = [](spacebattle::command_shared cmd,
-                                          const std::exception &) -> spacebattle::command_shared {
+    engine::handlerFunc innerHandler = [](engine::command_shared cmd,
+                                          const std::exception &) -> engine::command_shared {
         try {
             cmd->execute();
         } catch (const std::exception& e) {
@@ -162,9 +163,9 @@ TEST(SOLID_EXCEPTIONS, REPEAT_TWICE_AND_LOG_IF_ANY_EXCEPT)
 
     eh.register_handler(typeid(engine::repeat_twice_command), typeid(mock_exception), innerHandler);
 
-    engine::handlerFunc handlerLocal = [](spacebattle::command_shared cmd,
-                                          const std::exception &) -> spacebattle::command_shared {
-        spacebattle::command_shared cmd_repeat;
+    engine::handlerFunc handlerLocal = [](engine::command_shared cmd,
+                                          const std::exception &) -> engine::command_shared {
+        engine::command_shared cmd_repeat;
         try
         {
             cmd_repeat = std::make_shared<engine::repeat_twice_command>(cmd);

@@ -2,7 +2,7 @@
 #include <rotatable_adapter.h>
 #include <uobject.h>
 
-namespace spacebattle
+namespace engine
 {
     rotatable_adapter::rotatable_adapter(uobject& obj):obj(obj)
     {}

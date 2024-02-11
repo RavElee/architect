@@ -3,7 +3,8 @@
 
 #include <functional>
 #include <memory>
-namespace spacebattle
+
+namespace engine
 {
     class command
     {

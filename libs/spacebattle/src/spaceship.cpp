@@ -1,7 +1,7 @@
 
 #include <spaceship.h>
 
-namespace spacebattle
+namespace engine
 {
     spaceship::spaceship()
     {

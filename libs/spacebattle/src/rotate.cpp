@@ -2,7 +2,7 @@
 #include <rotate.h>
 #include <iostream>
 
-namespace spacebattle
+namespace engine
 {
     rotate::rotate(rotatable &obj) : obj(obj)
     {

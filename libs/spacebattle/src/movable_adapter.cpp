@@ -4,7 +4,7 @@
 #include <iostream>
 #include <movable_adapter.h>
 
-namespace spacebattle
+namespace engine
 {
     movable_adapter::movable_adapter(uobject &obj) : obj(obj)
     {

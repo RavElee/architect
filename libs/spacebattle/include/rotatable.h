@@ -4,7 +4,7 @@
 #include <cstdint>
 #include <direction.h>
 
-namespace spacebattle
+namespace engine
 {
     class rotatable
     {

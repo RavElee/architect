@@ -7,7 +7,7 @@
 
 namespace engine
 {
-    class empty_command : public spacebattle::command
+    class empty_command : public engine::command
     {
     public:
         void execute() override

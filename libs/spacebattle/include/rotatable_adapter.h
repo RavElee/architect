@@ -3,7 +3,7 @@
 
 #include <rotatable.h>
 
-namespace spacebattle
+namespace engine
 {
     class uobject;
 

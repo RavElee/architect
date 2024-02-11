@@ -6,11 +6,11 @@
 namespace engine
 {
 
-    class repeat_command : public spacebattle::command
+    class repeat_command : public command
     {
-        spacebattle::command_shared cmd;
+        command_shared cmd;
     public:
-        repeat_command(spacebattle::command_shared cmd): cmd(cmd) {}
+        repeat_command(command_shared cmd): cmd(cmd) {}
 
         void execute() override
         {

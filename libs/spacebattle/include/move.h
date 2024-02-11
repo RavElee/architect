@@ -4,7 +4,7 @@
 #include "command.h"
 #include "movable.h"
 
-namespace spacebattle
+namespace engine
 {
     class move : public command
     {

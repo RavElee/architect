@@ -14,7 +14,7 @@ namespace engine
         storage[c][e] = func;
     }
 
-    spacebattle::command_shared exception_handler::handle(spacebattle::command_shared &c, const std::exception &e)
+    command_shared exception_handler::handle(command_shared &c, const std::exception &e)
     {
         auto t_cmd = std::type_index(typeid(*c));
         auto t_exc = std::type_index(typeid(e));

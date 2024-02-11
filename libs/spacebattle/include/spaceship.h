@@ -4,7 +4,7 @@
 #include "movable_adapter.h"
 #include <uobject.h>
 
-namespace spacebattle
+namespace engine
 {
     class spaceship : public uobject
     {

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <move.h>
 
-namespace spacebattle
+namespace engine
 {
     move::move(movable &obj) : obj(obj)
     {
