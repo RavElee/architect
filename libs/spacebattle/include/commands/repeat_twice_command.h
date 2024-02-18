@@ -7,7 +7,7 @@ namespace engine
     class repeat_twice_command : public engine::repeat_command
     {
     public:
-        repeat_twice_command(command_shared cmd) : repeat_command(cmd) {};
+        explicit repeat_twice_command(command_shared cmd) : repeat_command(cmd) {};
     };
 } // namespace engine
 

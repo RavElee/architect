@@ -7,6 +7,8 @@ include(GoogleTest)
 set(HEADERS
    ./tests/include/spacebattle_tests.h
    ./tests/include/mock.h
+   ./tests/include/macro_commands_tests.h
+   ./tests/include/solid_exception_tests.h
 )
 set(SOURCES
 )

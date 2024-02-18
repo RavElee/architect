@@ -1,6 +1,5 @@
 
 #include "uobject.h"
-#include <cmath>
 #include <movable_adapter.h>
 #include <movable.h>
 
@@ -22,12 +21,6 @@ namespace engine
 
     math::vectorInt2D movable_adapter::getVelocity() const
     {
-        // int d = obj.getProperty<int>(PROPERTY::DIRECTION);
-        // int n = obj.getProperty<int>(PROPERTY::DIRECTIONS_COUNT);
-        // int v = obj.getProperty<int>(PROPERTY::VELOCITY_ABS);
-        // return math::vectorInt2D( v * std::cos(static_cast<double>((double)d * 2 * M_PI / (double) n)),
-        //                           v * std::sin(static_cast<double>((double)d * 2 * M_PI / (double) n)));
-
         return obj.getProperty<math::vectorInt2D>(PROPERTY::VELOCITY_VECTOR);
     }
 

@@ -2,6 +2,8 @@
 #define VECTOR_H
 
 #include <array>
+#include <cassert>
+#include <cmath>
 #include <cstdint>
 #include <ostream>
 
@@ -39,6 +41,28 @@ namespace math
         vector<T, N> plus(const vector<T, N> in1, const vector<T, N> in2)
         {
             return in1 + in2;
+        }
+
+        double abs()
+        {
+            double res(0);
+            for(auto& i : coords)
+            {
+                res += i * i;
+            }
+            return std::sqrt(res);
+        }
+
+        double angle()
+        {
+            static_assert(N == 2, "doesn't implement");
+            return std::atan2(coords.at(1), coords.at(0));
+        }
+
+        int discreteAngle(int n)
+        {
+            assert(n > 0);
+            return static_cast<int>(angle() * n / (2 * M_PI));
         }
 
         friend std::ostream& operator<<(std::ostream& os, vector<T,N> vec)

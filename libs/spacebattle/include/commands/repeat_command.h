@@ -11,7 +11,7 @@ namespace engine
         command_shared cmd;
 
     public:
-        repeat_command(command_shared cmd) : cmd(cmd)
+        explicit repeat_command(command_shared cmd) : cmd(cmd)
         {
         }
 

@@ -12,7 +12,7 @@ namespace engine
         movable &obj;
 
     public:
-        move(movable &obj);
+        explicit move(movable &obj);
         void execute() override;
     };
 } // namespace engine

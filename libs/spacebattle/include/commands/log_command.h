@@ -9,12 +9,9 @@ namespace engine
     class log_command : public engine::command
     {
     public:
-        log_command(const std::exception& e):e(e) {};
+        explicit log_command(const std::exception& e);
 
-        void execute() override
-        {
-            std::cout << "Exception has been thrown: " << typeid(e).name() << " " << e.what() << std::endl;
-        }
+        void execute() override;
 
     private:
         const std::exception& e;

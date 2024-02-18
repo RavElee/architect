@@ -15,8 +15,18 @@ TEST(MOVING, MOVE_TEST)
     engine::spaceship ship;
     ship.setProperty(engine::PROPERTY::POSITION, math::vectorInt2D(12, 5));
     ship.setProperty(engine::PROPERTY::DIRECTION, 0);
-    ship.setProperty(engine::PROPERTY::DIRECTIONS_COUNT, 3600);
+    ship.setProperty<int>(engine::PROPERTY::DIRECTIONS_COUNT, 3600);
     ship.setProperty(engine::PROPERTY::VELOCITY_VECTOR, math::vectorInt2D(-7, 3));
+
+    /* ship.setProperty(engine::PROPERTY::VELOCITY_ABS, math::vectorInt2D(-7, 3).abs()); */
+    /* ship.setProperty(engine::PROPERTY::DIRECTION, */
+    /*                  static_cast<int>(math::vectorInt2D(-7, 3).angle() * */
+    /*                  ship.getProperty<int>(engine::PROPERTY::DIRECTIONS_COUNT) / (2 * M_PI))); */
+
+    /* std::cout << "rad " << math::vectorInt2D(-7, 3).angle() << std::endl; */
+    /* std::cout << "deg " << math::vectorInt2D(-7, 3).angle() * 180.0/(M_PI) << std::endl; */
+    /* std::cout << static_cast<int>(math::vectorInt2D(-7, 3).angle() * 3600.0 / (2 * M_PI)) << std::endl; */
+    /* std::cout << "abs " << math::vectorInt2D(-7, 3).abs() << std::endl; */
 
     engine::movable_adapter mv_adapter(ship);
     engine::move mv_cmd(mv_adapter);

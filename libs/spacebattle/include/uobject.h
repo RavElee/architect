@@ -14,7 +14,9 @@ namespace engine
         DIRECTIONS_COUNT,
         VELOCITY_ABS,
         VELOCITY_VECTOR,
-        ANGULAR_VELOCITY
+        ANGULAR_VELOCITY,
+        FUEL,
+        FUEL_VELOCITY
     };
 
     class uobject

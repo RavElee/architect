@@ -12,7 +12,7 @@ namespace engine
         rotatable &obj;
 
     public:
-        rotate(rotatable &obj);
+        explicit rotate(rotatable &obj);
         void execute() override;
     };
 

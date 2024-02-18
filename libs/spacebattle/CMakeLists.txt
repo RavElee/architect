@@ -25,6 +25,14 @@ set(HEADERS
     ./include/empty_exception.h
     ./include/commands/repeat_command.h
     ./include/commands/repeat_twice_command.h
+    ./include/burn_fuel.h
+    ./include/check_fuel.h
+    ./include/check_fuel_exception.h
+    ./include/fuelable.h
+    ./include/fuelable_adapter.h
+    ./include/macro_command.h
+    ./include/movable_adapter_with_course.h
+    ./include/change_velocity.h
 )
 
 set(SOURCES
@@ -32,6 +40,7 @@ set(SOURCES
     ./src/direction.cpp
     ./src/movable_adapter.cpp
     ./src/commands/rotate.cpp
+    ./src/commands/log_command.cpp
     ./src/spaceship.cpp
     ./src/rotatable_adapter.cpp 
     ./src/loop.cpp
