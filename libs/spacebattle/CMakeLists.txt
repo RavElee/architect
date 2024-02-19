@@ -25,14 +25,16 @@ set(HEADERS
     ./include/empty_exception.h
     ./include/commands/repeat_command.h
     ./include/commands/repeat_twice_command.h
-    ./include/burn_fuel.h
-    ./include/check_fuel.h
+    ./include/commands/burn_fuel.h
+    ./include/commands/check_fuel.h
     ./include/check_fuel_exception.h
     ./include/fuelable.h
     ./include/fuelable_adapter.h
-    ./include/macro_command.h
+    ./include/commands/macro_command.h
     ./include/movable_adapter_with_course.h
-    ./include/change_velocity.h
+    ./include/commands/change_velocity.h
+    ./include/ioc.h
+    ./include/commands/ioc_init.h
 )
 
 set(SOURCES

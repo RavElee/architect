@@ -2,6 +2,7 @@
 #define MACRO_COMMAND_H
 #include <commands/command.h>
 #include <vector>
+#include <exception>
 
 namespace engine
 {
