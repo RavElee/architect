@@ -1,6 +1,6 @@
 
 #include <commands/rotate.h>
-#include <rotatable.h>
+#include <interfaces/rotatable.h>
 
 namespace engine
 {

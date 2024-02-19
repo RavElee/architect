@@ -7,7 +7,7 @@
 #include <commands/repeat_command.h>
 #include <commands/repeat_twice_command.h>
 #include <commands/empty_command.h>
-#include <empty_exception.h>
+#include <exceptions/empty_exception.h>
 #include <exception_handler.h>
 #include <commands/log_command.h>
 #include <loop.h>

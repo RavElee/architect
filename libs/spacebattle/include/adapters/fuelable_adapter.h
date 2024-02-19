@@ -2,7 +2,7 @@
 #define FUELABLE_ADAPTER_H
 
 #include "uobject.h"
-#include <fuelable.h>
+#include <interfaces/fuelable.h>
 namespace engine
 {
     class fuelable_adapter : public fuelable

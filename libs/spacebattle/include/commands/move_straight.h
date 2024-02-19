@@ -4,7 +4,7 @@
 #include "check_fuel.h"
 #include "burn_fuel.h"
 #include "commands/move.h"
-#include "movable.h"
+#include "interfaces/movable.h"
 #include "macro_command.h"
 
 namespace engine

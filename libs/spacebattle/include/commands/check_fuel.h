@@ -1,8 +1,8 @@
 #ifndef CHECK_FUEL_H
 #define CHECK_FUEL_H
 
-#include "check_fuel_exception.h"
-#include "fuelable.h"
+#include "exceptions/check_fuel_exception.h"
+#include "interfaces/fuelable.h"
 #include <commands/command.h>
 #include <limits>
 

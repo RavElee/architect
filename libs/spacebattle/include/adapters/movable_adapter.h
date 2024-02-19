@@ -1,7 +1,7 @@
 #ifndef MOVABLE_ADAPTER_H
 #define MOVABLE_ADAPTER_H
 
-#include <movable.h>
+#include <interfaces/movable.h>
 
 namespace engine
 {

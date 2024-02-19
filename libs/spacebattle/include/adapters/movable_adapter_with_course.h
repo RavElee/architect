@@ -2,7 +2,7 @@
 #define MOVABLE_ADAPTER_WITH_COURSE_H
 
 #include "uobject.h"
-#include <movable_adapter.h>
+#include <adapters/movable_adapter.h>
 #include <cmath>
 
 namespace engine

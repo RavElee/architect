@@ -4,11 +4,11 @@
 #include <gtest/gtest.h>
 #include <commands/burn_fuel.h>
 #include <commands/change_velocity.h>
-#include "fuelable_adapter.h"
+#include "adapters/fuelable_adapter.h"
 #include <commands/macro_command.h>
-#include "movable_adapter_with_course.h"
+#include "adapters/movable_adapter_with_course.h"
 #include <commands/move_straight.h>
-#include "rotatable_adapter.h"
+#include "adapters/rotatable_adapter.h"
 #include <commands/check_fuel.h>
 
 TEST(MACRO_COMMAND, CHEC_FUEL_CMD_NO_THROW)

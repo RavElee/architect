@@ -1,6 +1,6 @@
 
 #include <commands/move.h>
-#include <movable.h>
+#include <interfaces/movable.h>
 
 namespace engine
 {

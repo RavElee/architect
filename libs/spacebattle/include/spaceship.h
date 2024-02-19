@@ -1,7 +1,6 @@
 #ifndef SHIP_H
 #define SHIP_H
 
-#include "movable_adapter.h"
 #include <uobject.h>
 
 namespace engine
