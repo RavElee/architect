@@ -102,7 +102,7 @@ TEST(SOLID_EXCEPTIONS, REPEAT_CMD_PUT_IN_Q)
     // иначе loop умрёт и команды не обработаются
     // TODO: сделать очередь с приоритетами
     using namespace std::literals;
-    std::this_thread::sleep_for(100ms);
+    std::this_thread::sleep_for(2ms);
     eventLoop.stop();
 }
 
