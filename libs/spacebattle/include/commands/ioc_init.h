@@ -7,117 +7,81 @@
 
 namespace engine
 {
-    class register_dependency : public command
-    {
-        std::any &func;
-        std::string_view &str;
-
-    public:
-        explicit register_dependency(std::string_view &str, std::any &func) : func(func), str(str)
-        {
-        }
-        void execute() override
-        {
-            ioc::resolve<ioc::scope>("IoC.Scope.Current")->emplace(str, func);
-        }
-    };
-
-    class clear_current_scope : public command
-    {
-        ioc::scope_ptr scope;
-
-    public:
-        explicit clear_current_scope(ioc::scope_ptr scope) : scope(scope)
-        {
-        }
-
-        void execute() override
-        {
-            scope->clear();
-            scope.reset();
-        }
-    };
-
-    class set_current_scope : public command
-    {
-        ioc::scope_ptr scope;
-
-    public:
-        explicit set_current_scope(ioc::scope_ptr scope) : scope(scope)
-        {
-        }
-
-        void execute() override
-        {
-            ioc::currentScope = scope;
-        }
-    };
-
     class ioc_init : public command
     {
-    public:
-        void execute() override
+        static bool isInit;
+
+        class register_dependency : public command
         {
-            ioc::rootScope->emplace("IoC.Scope.Current.Set",
-                                    (ioc::strategy<command, ioc::scope_ptr>)
-                                    [](ioc::scope_ptr newScope) {
-                                        return std::make_shared<set_current_scope>(newScope);
-                                    });
+            std::any func;
+            std::string_view str;
 
-            ioc::rootScope->emplace("IoC.Scope.Current.Clear",
-                                    (ioc::strategy<command, ioc::scope_ptr>)
-                                    [](ioc::scope_ptr scope) {
-                                        return std::make_shared<clear_current_scope>(scope);
-                                    });
+        public:
+            explicit register_dependency(std::string_view str, std::any func) : func(func), str(str)
+            {
+            }
+            void execute() override
+            {
+                // std::cout << "register dep: " << str << " f_name: " << func.type().name()<<std::endl;
+                auto isEmplaced = ioc::resolve<ioc::scope>("IoC.Scope.Current")->emplace(str, func).second;
+                if(!isEmplaced)
+                    throw std::runtime_error(std::string(str)+std::string("has been already set"));
+            }
+        };
 
-            ioc::rootScope->emplace("IoC.Scope.Current",
-                                    (ioc::strategy<ioc::scope>)
-                                    []() {
-                                        return ioc::currentScope ? ioc::currentScope : ioc::rootScope;
-                                    });
+        class clear_current_scope : public command
+        {
+            ioc::scope_ptr scope;
 
-            ioc::rootScope->emplace("IoC.Scope.Parent",
-                                    (ioc::strategy<ioc::scope>)
-                                    []()->ioc::scope_ptr{
-                                        // TODO: root scope doesn't have parent
-                                        throw std::exception();
-                                    });
+        public:
+            explicit clear_current_scope(ioc::scope_ptr scope) : scope(scope)
+            {
+            }
 
-            ioc::rootScope->emplace("IoC.Scope.Create.Empty",
-                                    (ioc::strategy<ioc::scope>)
-                                    [](){
-                                        return std::make_shared<ioc::scope>();
-                                    });
+            void execute() override
+            {
+                scope->clear();
+                scope.reset();
+            }
+        };
 
-            ioc::rootScope->emplace("IoC.Scope.Create",
-                                    (ioc::strategy<ioc::scope, ioc::scope_ptr>)
-                                    [](ioc::scope_ptr parent = nullptr)->ioc::scope_ptr{
-                                        auto creatingScope = ioc::resolve<ioc::scope>("IoC.Scope.Create.Empty");
-                                        if (parent)
-                                            creatingScope->emplace("IoC.Scope.Parent",
-                                                                   (ioc::strategy<ioc::scope>)
-                                                                   [parent]() ->ioc::scope_ptr {
-                                                                       return parent;
-                                                                   });
-                                        else
-                                        {
-                                            auto parentScope = ioc::resolve<ioc::scope>("IoC.Scope.Current");
-                                            creatingScope->emplace("IoC.Scope.Parent",
-                                                                   (ioc::strategy<ioc::scope>)
-                                                                   [parentScope]()->ioc::scope_ptr{
-                                                                       return parentScope;
-                                                                   });
-                                        }
-                                        return creatingScope;
-                                    });
+        class set_current_scope : public command
+        {
+            ioc::scope_ptr scope;
 
-            ioc::rootScope->emplace("IoC.Register",
-                                    (ioc::strategy<command, std::string_view, std::any>)
-                                    [](std::string_view str, std::any func) {
-                                        return std::make_shared<register_dependency>(str, func);
-                                    });
+        public:
+            explicit set_current_scope(ioc::scope_ptr scope) : scope(scope)
+            {
+            }
+
+            void execute() override
+            {
+                ioc::currentScope = scope;
+            }
+        };
+
+    public:
+        void execute() override;
+    };
+
+    class ioc::scoped_ioc
+    {
+        ioc::scope_ptr scope;
+    public:
+        scoped_ioc()
+        {
+            scope = ioc::resolve<ioc::scope, ioc::scope_ptr>("IoC.Scope.Create", nullptr);
+            ioc::resolve<command>("IoC.Scope.Current.Set", scope)->execute();
+        }
+
+        ~scoped_ioc()
+        {
+            auto parentScope = ioc::resolve<ioc::scope>("IoC.Scope.Parent");
+            ioc::resolve<command>("IoC.Scope.Current.Set", parentScope)->execute();
+            ioc::resolve<command>("IoC.Scope.Current.Clear", scope)->execute();
         }
     };
+
 } // namespace engine
 
 #endif // IOC_INIT_H

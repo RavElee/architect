@@ -47,6 +47,8 @@ set(SOURCES
     ./src/adapters/rotatable_adapter.cpp 
     ./src/loop.cpp
     ./src/exception_handler.cpp
+    ./src/ioc.cpp
+    ./src/commands/ioc_init.cpp
 )
 
 add_library(${PROJECT_NAME} STATIC ${HEADERS} ${SOURCES})
