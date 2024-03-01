@@ -5,7 +5,7 @@
 #include <any>
 #include <unordered_map>
 
-namespace spacebattle
+namespace engine
 {
     enum class PROPERTY
     {
@@ -14,7 +14,9 @@ namespace spacebattle
         DIRECTIONS_COUNT,
         VELOCITY_ABS,
         VELOCITY_VECTOR,
-        ANGULAR_VELOCITY
+        ANGULAR_VELOCITY,
+        FUEL,
+        FUEL_VELOCITY
     };
 
     class uobject

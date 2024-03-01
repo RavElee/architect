@@ -6,13 +6,13 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Wall -Wextra -Wpedantic -Woverloaded-virtual  -fno-common -Wnon-virtual-dtor -Wdelete-non-virtual-dtor")
 
 set(HEADERS
-    ./include/command.h
+    ./include/commands/command.h
     ./include/movable.h
-    ./include/move.h
+    ./include/commands/move.h
     ./include/direction.h
     ./include/movable_adapter.h
     ./include/rotatable.h
-    ./include/rotate.h
+    ./include/commands/rotate.h
     ./include/spaceship.h
     ./include/vector.h
     ./include/uobject.h
@@ -20,18 +20,27 @@ set(HEADERS
     ./include/threadsafe_q.h
     ./include/loop.h
     ./include/exception_handler.h
-    ./include/log_command.h
-    ./include/empty_command.h
+    ./include/commands/log_command.h
+    ./include/commands/empty_command.h
     ./include/empty_exception.h
-    ./include/repeat_command.h
-    ./include/repeat_twice_command.h
+    ./include/commands/repeat_command.h
+    ./include/commands/repeat_twice_command.h
+    ./include/burn_fuel.h
+    ./include/check_fuel.h
+    ./include/check_fuel_exception.h
+    ./include/fuelable.h
+    ./include/fuelable_adapter.h
+    ./include/macro_command.h
+    ./include/movable_adapter_with_course.h
+    ./include/change_velocity.h
 )
 
 set(SOURCES
-    ./src/move.cpp
+    ./src/commands/move.cpp
     ./src/direction.cpp
     ./src/movable_adapter.cpp
-    ./src/rotate.cpp
+    ./src/commands/rotate.cpp
+    ./src/commands/log_command.cpp
     ./src/spaceship.cpp
     ./src/rotatable_adapter.cpp 
     ./src/loop.cpp

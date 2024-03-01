@@ -1,12 +1,11 @@
 
 #include <exception_handler.h>
-#include <iostream>
 #include <loop.h>
 
 namespace engine
 {
 
-    loop::loop(threadsafe_q<spacebattle::command_shared> &q)
+    loop::loop(threadsafe_q<command_shared> &q)
         : stopFlag(true), q(q)
     {
     }

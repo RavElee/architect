@@ -1,9 +1,9 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
-#include <functional>
 #include <memory>
-namespace spacebattle
+
+namespace engine
 {
     class command
     {

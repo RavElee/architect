@@ -1,8 +1,8 @@
 
-#include <rotate.h>
-#include <iostream>
+#include <commands/rotate.h>
+#include <rotatable.h>
 
-namespace spacebattle
+namespace engine
 {
     rotate::rotate(rotatable &obj) : obj(obj)
     {

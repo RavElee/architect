@@ -2,10 +2,10 @@
 #define MOCK_H
 
 #include <gmock/gmock.h>
-#include <command.h>
+#include <commands/command.h>
 #include <exception_handler.h>
 
-class mock_command : public spacebattle::command
+class mock_command : public engine::command
 {
 public:
     MOCK_METHOD(void, execute, (), (override));
@@ -21,7 +21,7 @@ class mock_exception : public std::exception
 
 
 
-engine::handlerFunc mock_handler = [](spacebattle::command_shared cmd, const std::exception&)->spacebattle::command_shared
+engine::handlerFunc mock_handler = [](engine::command_shared cmd, const std::exception&)->engine::command_shared
 {
     return cmd;
 };

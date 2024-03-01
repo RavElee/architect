@@ -3,19 +3,19 @@
 
 #include <movable.h>
 
-namespace spacebattle
+namespace engine
 {
     class uobject;
 
     class movable_adapter : public movable
     {
     public:
-        movable_adapter(uobject& obj);
+        explicit movable_adapter(uobject& obj);
 
         math::vector2D<std::int32_t> getPosition() const override;
         void setPosition(math::vector2D<std::int32_t> position) override;
         math::vector2D<std::int32_t> getVelocity() const override;
-    private:
+    protected:
         uobject &obj;
     };
 } // namespace spacebattle
