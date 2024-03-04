@@ -1,7 +1,7 @@
 
-#include <rotatable_adapter.h>
+#include <adapters/rotatable_adapter.h>
 #include <uobject.h>
-#include <rotatable.h>
+#include <interfaces/rotatable.h>
 
 
 namespace engine

@@ -1,7 +1,7 @@
 #ifndef BURN_FUEL_H
 #define BURN_FUEL_H
 
-#include "fuelable.h"
+#include "interfaces/fuelable.h"
 #include <commands/command.h>
 
 namespace engine

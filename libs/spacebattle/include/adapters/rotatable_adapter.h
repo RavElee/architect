@@ -1,7 +1,7 @@
 #ifndef ROTATABLE_ADAPTER_H
 #define ROTATABLE_ADAPTER_H
 
-#include <rotatable.h>
+#include <interfaces/rotatable.h>
 
 namespace engine
 {

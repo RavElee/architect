@@ -4,10 +4,10 @@
 #include "burn_fuel.h"
 #include "check_fuel.h"
 #include "commands/rotate.h"
-#include "fuelable.h"
-#include "movable.h"
-#include "rotatable.h"
-#include <macro_command.h>
+#include "interfaces/fuelable.h"
+#include "interfaces/movable.h"
+#include "interfaces/rotatable.h"
+#include "macro_command.h"
 
 namespace engine
 {

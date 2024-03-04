@@ -1,6 +1,7 @@
 #ifndef UOBJECT_H
 #define UOBJECT_H
 
+#include <iostream>
 #include <vector.h>
 #include <any>
 #include <unordered_map>
@@ -34,7 +35,8 @@ namespace engine
         T getProperty(const PROPERTY key) const
         {
             if (map.find(key) == map.end())
-                throw std::exception();
+                // throw std::exception();
+                throw std::runtime_error("undefined key");
 
             return std::any_cast<std::decay_t<T>>(map.at(key));
         }
@@ -43,6 +45,45 @@ namespace engine
         void setProperty(const PROPERTY key, T val)
         {
             setPropertyHelper<std::decay_t<T>>(key, val);
+        }
+
+        uobject& operator=(uobject&& other)
+        {
+            std::cout << "move operator="<< std::endl;
+            if(this == &other)
+                return *this;
+            this->map = std::move(other.map);
+            return *this;
+        }
+
+        uobject& operator=(const uobject& other)
+        {
+            std::cout << "copy operator="<< std::endl;
+            if(this == &other)
+                return *this;
+
+            this->map = other.map;
+
+            return *this;
+        }
+
+        uobject(const uobject& other):
+            map(other.map)
+        {
+            std::cout << "copy cnstr"<< std::endl;
+        }
+
+        uobject(uobject&& other):
+            map(std::move(other.map))
+        {
+            std::cout << "move cnstr"<< std::endl;
+        }
+
+        uobject() = default;
+
+        std::size_t size() const
+        {
+            return map.size();
         }
 
     private:

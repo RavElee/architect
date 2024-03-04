@@ -1,7 +1,7 @@
 
 #include "uobject.h"
-#include <movable_adapter.h>
-#include <movable.h>
+#include <adapters/movable_adapter.h>
+#include <interfaces/movable.h>
 
 namespace engine
 {

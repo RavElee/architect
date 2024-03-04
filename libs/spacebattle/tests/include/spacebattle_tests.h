@@ -3,7 +3,8 @@
 
 #include <gtest/gtest.h>
 
-#include "rotatable_adapter.h"
+#include "adapters/rotatable_adapter.h"
+#include "adapters/movable_adapter.h"
 #include <gtest/gtest.h>
 #include <commands/move.h>
 #include <commands/rotate.h>

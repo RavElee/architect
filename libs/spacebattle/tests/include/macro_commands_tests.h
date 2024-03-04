@@ -2,14 +2,14 @@
 #define MACRO_COMMANDS_TESTS_H
 // MACRO COMMANDS TESTS
 #include <gtest/gtest.h>
-#include "burn_fuel.h"
-#include "change_velocity.h"
-#include "fuelable_adapter.h"
-#include "macro_command.h"
-#include "movable_adapter_with_course.h"
-#include "move_straight.h"
-#include "rotatable_adapter.h"
-#include <check_fuel.h>
+#include <commands/burn_fuel.h>
+#include <commands/change_velocity.h>
+#include "adapters/fuelable_adapter.h"
+#include <commands/macro_command.h>
+#include "adapters/movable_adapter_with_course.h"
+#include <commands/move_straight.h>
+#include "adapters/rotatable_adapter.h"
+#include <commands/check_fuel.h>
 
 TEST(MACRO_COMMAND, CHEC_FUEL_CMD_NO_THROW)
 {
