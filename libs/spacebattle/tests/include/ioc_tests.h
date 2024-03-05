@@ -5,6 +5,7 @@
 // IOC TESTS
 #include "commands/ioc_init.h"
 #include "ioc.h"
+#include "uobject.h"
 #include <cstring>
 #include <future>
 
