@@ -1,0 +1,21 @@
+[[included_adapter]]
+uobject.h
+ioc.h
+commands/command.h
+interfaces/fuelable.h
+[[namespace]]
+engine
+[[class]]
+fuelable
+[[method]]
+void
+setFuel
+float
+[[method]]
+float
+getFuel const
+[[method]]
+float
+getVelocity const
+[[end]]
+
