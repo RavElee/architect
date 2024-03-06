@@ -2,6 +2,7 @@
 #define UOBJECT_H
 
 #include <iostream>
+#include <memory>
 #include <vector.h>
 #include <any>
 #include <unordered_map>
@@ -95,6 +96,8 @@ namespace engine
 
         std::unordered_map<PROPERTY, std::any> map;
     };
+
+    using shared_uobject = std::shared_ptr<uobject>;
 } // namespace spacebattle
 
 

@@ -6,8 +6,6 @@
 #include <commands/command.h>
 #include <limits>
 
-#include <iostream>
-
 namespace engine
 {
     class check_fuel : public command

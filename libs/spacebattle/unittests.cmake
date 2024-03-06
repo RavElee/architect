@@ -10,6 +10,7 @@ set(HEADERS
    ./tests/include/macro_commands_tests.h
    ./tests/include/solid_exception_tests.h
    ./tests/include/ioc_tests.h
+   ./tests/include/autogen_tests.h
 )
 set(SOURCES
 )
