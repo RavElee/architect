@@ -17,6 +17,7 @@ namespace engine
         threadsafe_q() = default;
         ~threadsafe_q() = default;
 
+        // cppcheck-suppress missingMemberCopy
         threadsafe_q(const threadsafe_q &other) noexcept
         {
             std::lock_guard<std::mutex> lk(other.mut);
