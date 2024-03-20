@@ -28,6 +28,7 @@ set(HEADERS
     ./include/commands/change_velocity.h
     ./include/ioc.h
     ./include/commands/ioc_init.h
+    ./include/commands/start_loop.h
 )
 
 set(SOURCES
