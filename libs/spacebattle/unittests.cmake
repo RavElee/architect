@@ -12,6 +12,7 @@ set(HEADERS
    ./tests/include/ioc_tests.h
    ./tests/include/autogen_tests.h
    ./tests/include/manual_reset_event.h
+   ./tests/include/event_loop_tests.h
 )
 set(SOURCES
 )

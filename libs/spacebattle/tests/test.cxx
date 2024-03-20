@@ -3,7 +3,7 @@
 #include <spacebattle_tests.h>
 #include <ioc_tests.h>
 #include <autogen_tests.h>
-
+#include "event_loop_tests.h"
 
 int main(int argc, char *argv[])
 {
