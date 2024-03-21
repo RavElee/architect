@@ -82,9 +82,10 @@ TEST(SOLID_EXCEPTIONS, REPEAT_CMD_PUT_IN_Q)
     engine::loop eventLoop(q);
     eventLoop.start();
 
-    engine::handlerFunc handlerLocal = [&q](engine::command_shared cmd,
+    engine::handlerFunc handlerLocal = [&q, &eventLoop](engine::command_shared cmd,
                                             const std::exception &) -> engine::command_shared {
         q.push(std::make_shared<engine::repeat_command>(cmd));
+        eventLoop.stop();
         return std::make_shared<engine::empty_command>();
     };
 
@@ -99,11 +100,16 @@ TEST(SOLID_EXCEPTIONS, REPEAT_CMD_PUT_IN_Q)
 
     q.push(cmd);
 
-    // иначе loop умрёт и команды не обработаются
     // TODO: сделать очередь с приоритетами
-    using namespace std::literals;
-    std::this_thread::sleep_for(2ms);
-    eventLoop.stop();
+
+    /*
+      Чтобы убрать sleep, stop вызыается синхронно после того,
+      как repeat_cmd поместится в очередь
+    */
+
+    // using namespace std::literals;
+    // std::this_thread::sleep_for(2ms);
+    // eventLoop.stop();
 }
 
 TEST(SOLID_EXCEPTIONS, REPEAT_ONCE_AND_LOG_IF_ANY_EXCEPT)

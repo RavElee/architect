@@ -5,9 +5,20 @@
 namespace engine
 {
 
-    loop::loop(threadsafe_q<command_shared> &q)
-        : stopFlag(true), q(q)
+    loop::loop(threadsafe_q<command_shared> &q) : stopFlag(true), q(q)
     {
+        behavior = [this] {
+            auto cmd = this->q.wait_and_pop();
+
+            try
+            {
+                cmd->execute();
+            }
+            catch (const std::exception &e)
+            {
+                engine::exception_handler::instance().handle(cmd, e)->execute();
+            }
+        };
     }
 
     loop::~loop()
@@ -28,18 +39,33 @@ namespace engine
 
     void loop::stop()
     {
-        q.push(std::make_shared<loop::command_stop>(*this));
+        q.push(std::make_shared<loop::soft_stop>(*this));
+    }
+
+    void loop::set_behavior(const std::function<void()> &&behavior)
+    {
+        this->behavior = behavior;
     }
 
     void loop::loop_processor()
     {
         while (!stopFlag)
         {
-            auto cmd = q.wait_and_pop();
+            behavior();
+        }
+    }
 
-            // if (!cmd)
-            //     continue;
+    void loop::soft_stop::execute()
+    {
+        _loop.set_behavior([this]() {
+            if (_loop.q.empty())
+            {
+                _loop.stopFlag = true;
+                callback();
+                return;
+            }
 
+            auto cmd = _loop.q.wait_and_pop();
             try
             {
                 cmd->execute();
@@ -48,6 +74,7 @@ namespace engine
             {
                 engine::exception_handler::instance().handle(cmd, e)->execute();
             }
-        }
+        });
     }
+
 } // namespace engine
